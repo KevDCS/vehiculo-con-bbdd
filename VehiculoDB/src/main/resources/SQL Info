@@ -1,0 +1,45 @@
+
+-- Creacion de DB
+create database vehiculo_db;
+
+-- Usar DB
+use vehiculo_db;
+
+-- Crear tabla principal
+create table vehiculos(
+id_vehiculo int auto_increment not null,
+tipo_vehiculo varchar(50) not null,
+marca varchar(50) not null,
+potencia int not null,
+fecha_compra date not null,
+
+primary key (id_vehiculo)
+);
+
+-- Insertar datos en la tabla
+INSERT INTO vehiculos (tipo_vehiculo, marca, potencia, fecha_compra) VALUES
+('Sedán', 'Toyota', 150, '2023-01-15'),
+('SUV', 'Honda', 200, '2022-12-20'),
+('Camioneta', 'Ford', 250, '2021-06-30'),
+('Motocicleta', 'Yamaha', 100, '2023-03-11'),
+('Sedán', 'Chevrolet', 140, '2022-11-05'),
+('SUV', 'BMW', 240, '2021-10-17'),
+('Camioneta', 'Nissan', 220, '2020-07-25'),
+('Motocicleta', 'Kawasaki', 110, '2023-02-14'),
+('Sedán', 'Hyundai', 130, '2022-09-19'),
+('SUV', 'Mercedes-Benz', 230, '2021-05-22');
+
+
+-- Seleccionar potencia promedio por tipo de vehiculo
+SELECT tipo_vehiculo, ROUND(AVG(potencia)) as potencia
+FROM vehiculos
+group by tipo_vehiculo;
+
+
+-- Seleccionar potencia maxima por tipo de vehiculo
+SELECT tipo_vehiculo, ROUND(MAX(potencia)) as potencia
+FROM vehiculos
+group by tipo_vehiculo;
+
+-- Ver registros de la tabla
+select * from vehiculos;
